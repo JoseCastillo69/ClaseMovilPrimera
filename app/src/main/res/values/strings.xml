@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Calculadora</string>
+    <string name="titulo">Calculadora</string>
+    <string name="Primer_Numero"> Primero Numero </string>
+    <string name="Segundo_Numero"> Segundo Numero </string>
+    <string name="calcular"> Calcular </string>
+    <string name="Limpiar"> Limpiar </string>
+    <string name="suma">Suma</string>
+    <string name="resta">Resta</string>
+    <string name="multiplicacion">Multiplicacion</string>
+    <string name="division">Division</string>
+    <string name="seleccione">Seleccione una opcion</string>
+    <string-array name="opcione">
+        <item>@string/seleccione</item>
+        <item>@string/suma</item>
+        <item>@string/resta</item>
+        <item>@string/multiplicacion</item>
+        <item>@string/division</item>
+    </string-array>
 </resources>
