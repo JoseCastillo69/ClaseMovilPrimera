@@ -11,4 +11,8 @@
     <string name="multiplicacion">Multiplication</string>
     <string name="division">Division</string>
     <string name="seleccione">Choose an operation</string>
+    <string name="error_1">Type number one</string>
+    <string name="error_2">Type number two</string>
+    <string name="error_3">Choose an operation</string>
+    <string name="error_4">Number two cannot be zero</string>
 </resources>

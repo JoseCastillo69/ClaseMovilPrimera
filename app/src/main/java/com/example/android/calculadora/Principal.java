@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.view.*;
+import android.widget.Toast;
 
 public class Principal extends AppCompatActivity {
 
@@ -43,31 +44,59 @@ public class Principal extends AppCompatActivity {
     public void calcular (View v){
         int opcion;
         double num1, num2, resultado = 0;
-        opcion = operaciones.getSelectedItemPosition();
-        num1 = Double.parseDouble(n1.getText().toString());
-        num2 = Double.parseDouble(n2.getText().toString());
-        switch (opcion){
-            case 0:
-            resultado = Metodos.sumar(num1, num2);
-            break;
-            case 1:
-                resultado = Metodos.restar(num1, num2);
-                break;
-            case 2:
-                resultado = Metodos.multiplicar(num1, num2);
-                break;
-            case 3:
-                resultado = Metodos.dividir(num1, num2);
-                break;
+        if (validar()){
+            opcion = operaciones.getSelectedItemPosition();
+            num1 = Double.parseDouble(n1.getText().toString());
+            num2 = Double.parseDouble(n2.getText().toString());
+            switch (opcion){
+                case 1:
+                    resultado = Metodos.sumar(num1, num2);
+                    break;
+                case 2:
+                    resultado = Metodos.restar(num1, num2);
+                    break;
+                case 3:
+                    resultado = Metodos.multiplicar(num1, num2);
+                    break;
+                case 4:
+                    resultado = Metodos.dividir(num1, num2);
+                    break;
+            }
+            res.setText(String.format("%.2f",resultado));
+
         }
-        res.setText(String.format("%.2f",resultado));
-    }
+        }
     public void limpiar (View v){
         n1.setText("");
         n2.setText("");
         operaciones.setSelection(0);
         n1.requestFocus();
         res.setText("");
+
+    }
+    public boolean validar (){
+        int o =operaciones.getSelectedItemPosition();
+        if (n1.getText().toString().isEmpty()){
+            n1.setError(recursos.getString(R.string.error_1));
+            n1.requestFocus();
+            return false;
+        }
+        if (n2.getText().toString().isEmpty()){
+            n2.setError(recursos.getString(R.string.error_1));
+            n2.requestFocus();
+            return false;
+        }
+
+        if (o == 0){
+            Toast.makeText(this,recursos.getString(R.string.error_3),Toast.LENGTH_SHORT).show();
+            n1.requestFocus();
+            return false;
+        }
+        if (o == 4 && Double.parseDouble(n2.getText().toString())==0){
+            n2.setError(recursos.getString(R.string.error_4));
+            n2.requestFocus();
+        }
+        return true;
 
     }
 }
